@@ -1,0 +1,24 @@
+<h3>CRISIS CENTER</h3>
+<p>Get your crisis here</p>
+ 
+<button type="button" (click)="onEditClick()">Make text editable!</button>
+ 
+<div *ngIf="canEdit; else noEdit">
+    <p>You can edit the following paragraph.</p>
+</div>
+ 
+<ng-template #noEdit>
+    <div id="parent-to-child">
+        
+        <h2>{{master}} controls {{heroes.length}} heroes</h2>
+
+        <app-hero-child
+        *ngFor="let hero of heroes"
+        [hero]="hero"
+        [master]="master">
+        </app-hero-child>
+    </div>
+</ng-template>
+
+<p [contentEditable]="canEdit">{{ message }}</p>
+<button type="button" (click)="updateName(message)">Update Name</button>
